@@ -24,21 +24,27 @@ export default function HomePage() {
       <Navbar />
 
       <main className="relative z-10">
-        <ParallaxSection speed={0.2}>
-          <HeroSection />
-        </ParallaxSection>
+        <div id="home">
+          <ParallaxSection speed={0.2}>
+            <HeroSection />
+          </ParallaxSection>
+        </div>
 
-        <ParallaxSection speed={0.1}>
-          <DemoComparisonSection />
-        </ParallaxSection>
+        <div id="demo">
+          <ParallaxSection speed={0.1}>
+            <DemoComparisonSection />
+          </ParallaxSection>
+        </div>
 
         <ParallaxSection speed={0.1}>
           <CostAnalysisSection />
         </ParallaxSection>
 
-        <ParallaxSection speed={0.15}>
-          <FeaturesSection />
-        </ParallaxSection>
+        <div id="features">
+          <ParallaxSection speed={0.15}>
+            <FeaturesSection />
+          </ParallaxSection>
+        </div>
 
         <ParallaxSection speed={0.1}>
           <HowItWorksSection />
@@ -48,17 +54,23 @@ export default function HomePage() {
           <IntegrationSection />
         </ParallaxSection>
 
-        <ParallaxSection speed={0.2}>
-          <PricingSection />
-        </ParallaxSection>
+        <div id="pricing">
+          <ParallaxSection speed={0.2}>
+            <PricingSection />
+          </ParallaxSection>
+        </div>
 
-        <ParallaxSection speed={0.1}>
-          <FAQSection />
-        </ParallaxSection>
+        <div id="faq">
+          <ParallaxSection speed={0.1}>
+            <FAQSection />
+          </ParallaxSection>
+        </div>
 
-        <ParallaxSection speed={0.15}>
-          <CTASection />
-        </ParallaxSection>
+        <div id="contact">
+          <ParallaxSection speed={0.15}>
+            <CTASection />
+          </ParallaxSection>
+        </div>
       </main>
 
       <Footer />

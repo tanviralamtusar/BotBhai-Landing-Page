@@ -89,7 +89,7 @@ export function PricingSection() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly")
 
   return (
-    <section className="px-4 py-20" id="pricing">
+    <section className="px-4 py-20">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

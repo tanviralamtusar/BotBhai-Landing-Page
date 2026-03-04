@@ -121,7 +121,7 @@ export function DemoComparisonSection() {
   }
 
   return (
-    <section className="px-4 py-20" id="demo">
+    <section className="px-4 py-20">
       <div className="mx-auto max-w-7xl">
         {/* Section Title */}
         <motion.div

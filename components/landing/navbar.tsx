@@ -9,15 +9,17 @@ import { cn } from "@/lib/utils"
 
 const navTabs = [
   { label: "Home", id: "home" },
+  { label: "Demo", id: "demo" },
   { label: "Features", id: "features" },
   { label: "Pricing", id: "pricing" },
   { label: "FAQ", id: "faq" },
-  { label: "Demo", id: "demo" },
+  { label: "Contact", id: "contact" },
 ]
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [activeTab, setActiveTab] = useState("home")
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,14 +29,41 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -70% 0px",
+      threshold: 0,
+    }
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveTab(entry.target.id)
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions)
+
+    navTabs.forEach((tab) => {
+      const element = document.getElementById(tab.id)
+      if (element) observer.observe(element)
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
   const scrollToSection = (id: string) => {
     if (id === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" })
+      setActiveTab("home")
       return
     }
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
+      setActiveTab(id)
       setIsMobileMenuOpen(false)
     }
   }
@@ -52,7 +81,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:block">
-          <FloatingTabs tabs={navTabs} onTabClick={scrollToSection} />
+          <FloatingTabs tabs={navTabs} activeTabId={activeTab} onTabClick={scrollToSection} />
         </div>
 
         <div className="hidden md:block">
@@ -73,7 +102,10 @@ export function Navbar() {
               <button
                 key={tab.id}
                 onClick={() => scrollToSection(tab.id)}
-                className="text-left text-muted-foreground transition-colors hover:text-primary"
+                className={cn(
+                  "text-left transition-colors hover:text-primary",
+                  activeTab === tab.id ? "text-primary font-semibold" : "text-muted-foreground",
+                )}
               >
                 {tab.label}
               </button>

@@ -24,7 +24,6 @@ export function HeroSection() {
 
   return (
     <section
-      id="home"
       className="relative flex min-h-screen flex-col items-center pt-32 pb-0 px-4 text-center overflow-hidden"
     >
       {/* Background Pattern */}

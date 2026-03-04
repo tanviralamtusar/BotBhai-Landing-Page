@@ -19,20 +19,38 @@ const faqs = [
     question: "ট্রায়াল আসলে ফ্রি?",
     answer: "একদম, কোনো লুকানো চার্জ নেই।",
   },
+  {
+    question: "আমার পেইজ কি ব্যান হবে?",
+    answer: "না, একদমই না। আমরা মেটা (Facebook) ভেরিফাইড অফিসিয়াল এপিআই ব্যবহার করি। এটি ১০০% সেইফ এবং ফেসবুকের পলিসি মেনে চলে।",
+  },
+  {
+    question: "সেটআপ করতে কতক্ষণ লাগে?",
+    answer: "মাত্র ২ মিনিট! জাস্ট 'Login with Facebook' এ ক্লিক করবেন, আর আপনার পেইজ সিলেক্ট করবেন। বাকি সব কাজ আমাদের সিস্টেম করে নিবে।",
+  },
+  {
+    question: "বট কি ভুল রিপ্লাই দেয়?",
+    answer: "বট নিজে থেকে কিছু বানায় না। আপনার প্রোডাক্টের দাম এবং ইনফরমেশন যা দিবেন, সেটাই বলবে। আর কোন উত্তর না জানলে সে আপনাকে নোটিফিকেশন দিবে।",
+  },
+  {
+    question: "পেমেন্ট মেথড কি কি আছে?",
+    answer: "বিকাশ, নগদ, রকেট, ব্যাংক ট্রান্সফার সব চলে।",
+  },
+  {
+    question: "কাস্টম ফিচার রিকোয়েস্ট করা যাবে?",
+    answer: "অবশ্যই! Custom Bhai প্যাকেজে আপনার যা দরকার সব বানিয়ে দেওয়া হবে।",
+  },
 ]
 
 export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section className="px-4 py-20" id="faq">
+    <section className="px-4 py-20">
       <div className="mx-auto max-w-3xl">
         <div className="mb-12 text-center">
-          <TextSpotlight
-            text="You might want to know"
-            textClassName="text-4xl font-bold md:text-5xl"
-            spotlightSize={300}
-          />
+          <h2 className="text-4xl font-bold md:text-5xl font-bengali">
+            সচরাচর <span className="text-primary">জিজ্ঞাসিত প্রশ্ন</span>
+          </h2>
         </div>
 
         <div className="space-y-4">

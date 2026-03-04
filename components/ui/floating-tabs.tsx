@@ -7,14 +7,14 @@ import { cn } from "@/lib/utils"
 interface FloatingTabsProps {
   tabs: { label: string; id: string }[]
   onTabClick: (id: string) => void
+  activeTabId?: string
   className?: string
 }
 
-export function FloatingTabs({ tabs, onTabClick, className }: FloatingTabsProps) {
-  const [activeTab, setActiveTab] = useState(0)
+export function FloatingTabs({ tabs, onTabClick, activeTabId, className }: FloatingTabsProps) {
+  const activeIndex = tabs.findIndex((tab) => tab.id === activeTabId)
 
-  const handleClick = (index: number, id: string) => {
-    setActiveTab(index)
+  const handleClick = (id: string) => {
     onTabClick(id)
   }
 
@@ -26,18 +26,18 @@ export function FloatingTabs({ tabs, onTabClick, className }: FloatingTabsProps)
           className="relative rounded-full px-4 py-2 text-sm font-medium transition-colors"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => handleClick(index, tab.id)}
+          onClick={() => handleClick(tab.id)}
         >
           <span
             className={cn(
               "relative z-10 transition-colors",
-              activeTab === index ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+              activeIndex === index ? "text-foreground" : "text-muted-foreground hover:text-foreground",
             )}
           >
             {tab.label}
           </span>
           <AnimatePresence>
-            {activeTab === index && (
+            {activeIndex === index && (
               <motion.div
                 layoutId="activeTabBackground"
                 initial={{ opacity: 0 }}

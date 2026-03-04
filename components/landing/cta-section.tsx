@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 
 export function CTASection() {
   return (
-    <section className="px-4 py-20" id="contact">
+    <section className="px-4 py-20">
       <div className="mx-auto max-w-5xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -28,7 +28,7 @@ export function CTASection() {
                   যোগাযোগ করুন
                 </h2>
                 <p className="max-w-md text-base text-slate-400 leading-relaxed">
-                  আপনার বিজনেসের জন্য সঠিক এআই সলিউশনটি খুঁজে পেতে আমাদের সাথে আজই কথা বলুন।
+                  আপনার বিজনেসের জন্য Perfect AI সলিউশনটি খুঁজে পেতে আমাদের সাথে আজই কথা বলুন।
                 </p>
               </div>
 

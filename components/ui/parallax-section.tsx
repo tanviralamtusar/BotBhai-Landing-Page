@@ -7,6 +7,7 @@ interface ParallaxSectionProps {
   children: ReactNode
   speed?: number // Positive = slower than scroll, Negative = faster than scroll
   className?: string
+  id?: string
   offset?: ["start" | "end" | "center", "start" | "end" | "center"]
 }
 
@@ -14,6 +15,7 @@ export function ParallaxSection({
   children,
   speed = 0.5,
   className = "",
+  id,
   offset = ["start", "end"],
 }: ParallaxSectionProps) {
   const ref = useRef<HTMLDivElement>(null)
@@ -26,7 +28,7 @@ export function ParallaxSection({
   const y = useTransform(scrollYProgress, [0, 1], [0, speed * 100])
 
   return (
-    <motion.div ref={ref} style={{ y }} className={className}>
+    <motion.div ref={ref} style={{ y }} className={className} id={id}>
       {children}
     </motion.div>
   )
