@@ -63,11 +63,9 @@ jobs:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
         with:
-          # Automatically inject basePath in your Next.js config file, and a
-          # permanent redirect from your site's old URLs to the new ones.
-          # When using `output: 'export'` it's recommended to set this to false.
+          # Disable automatic basePath injection since we handle it in next.config.mjs
           static_site_generator: next
       - name: Restore cache
         uses: actions/cache@v4
@@ -83,8 +81,11 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} run build
+        env:
+          GITHUB_PAGES: true
+          GITHUB_REPOSITORY: ${{ github.repository }}
       - name: Debug - List files
-        run: ls -R
+        run: ls -la && ls -la out || echo "out directory not found"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
